@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import{ FC } from 'react'
 import './footer.scss'
 import footerImg from '../../assets/footerImg.svg'
 

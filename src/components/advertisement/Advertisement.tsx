@@ -4,12 +4,21 @@ import adsRight from "../../assets/adsTopRight.jpg";
 import adsLeft from "../../assets/adsBottomLeft.jpg";
 import "./advertisement.scss";
 
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  thumbnail: string;
+}
+
 const Advertisement: FC = () => {
-  let [data, setData] = useState(null);
+  const [data, setData] = useState<Product[] | null>(null);
+
   useEffect(() => {
     axios
       .get("https://dummyjson.com/products?limit=3")
-      .then((res) => setData(res?.data?.products));
+      .then((res) => setData(res.data.products))
+      .catch((err) => console.error("Error fetching products:", err));
   }, []);
 
   return (
@@ -17,17 +26,15 @@ const Advertisement: FC = () => {
       <div className="adv__top__left">
         <h2>СЕЗОН 2020/21</h2>
         <div className="adv__cards">
-          {data?.map(
-            (el: any): JSX.Element => (
-              <div className="ads__card" key={el.id}>
-                <img src={el.thumbnail} alt="" />
-                <div className="ads__card__info">
-                  <h2>{el.title}</h2>
-                  <p>${el.price}</p>
-                </div>
+          {data?.map((el) => (
+            <div className="ads__card" key={el.id}>
+              <img src={el.thumbnail} alt={el.title} />
+              <div className="ads__card__info">
+                <h2>{el.title}</h2>
+                <p>${el.price}</p>
               </div>
-            )
-          )}
+            </div>
+          ))}
         </div>
       </div>
       <div className="adv__top__right">
@@ -35,10 +42,10 @@ const Advertisement: FC = () => {
           <h2>Новая коллекция</h2>
           <button>Каталог</button>
         </div>
-        <img src={adsRight} alt="" />
+        <img src={adsRight} alt="ads right" />
       </div>
       <div className="adv__bottom__left">
-        <img src={adsLeft} alt="" />
+        <img src={adsLeft} alt="ads left" />
       </div>
       <div className="adv__bottom__right">
         <h2>коллекция 2018</h2>
@@ -51,7 +58,7 @@ const Advertisement: FC = () => {
           ullamcorper pulvinar nulla malesuada integer. Aenean praesent viverra
           nulla nullam natoque volutpat curabitur auctor. Viverra viverra
           ullamcorper scelerisque risus dignissim egestas. Id aliquam a aliquam
-          egestas leo orci pharetra sed diam.{" "}
+          egestas leo orci pharetra sed diam.
         </p>
         <button>посмотреть коллекцию</button>
       </div>
