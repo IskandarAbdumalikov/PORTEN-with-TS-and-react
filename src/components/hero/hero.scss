@@ -1,0 +1,30 @@
+#hero {
+  background: url(../../assets/hero.png) no-repeat center/cover;
+  min-height: 600px;
+  padding: 180px 0px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  color: white;
+  .hero__top{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    h1{
+        font-size: 60px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid white;
+    }
+    border: 1px solid white;
+  }
+  .hero__bottom{
+    text-align: center;
+  }
+}

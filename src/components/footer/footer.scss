@@ -1,0 +1,29 @@
+footer {
+  background: #0f0f0f;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 50px;
+  padding: 50px 0px;
+  color: white;
+
+  h2 {
+    font-size: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+  }
+  &__cards {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    img{
+        width: 100% !important;
+        max-width: 240px;
+    }
+  }
+}
